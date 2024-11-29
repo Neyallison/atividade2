@@ -4,10 +4,6 @@
  */
 package main;
 
-/**
- *
- * @author Ney Allison
- */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +28,20 @@ public class Turma {
         alunos.add(aluno);
     }
 
+    public void exibirAlunosENotas(boolean aposRecuperacao) {
+        System.out.println(aposRecuperacao ? "Notas após recuperação:" : "Notas iniciais:");
+        for (Aluno aluno : alunos) {
+            System.out.print("Nome: " + aluno.nome + " - Notas: ");
+            for (double nota : aluno.notas) {
+                System.out.print(nota + " ");
+            }
+            if (aposRecuperacao && aluno.notaRecuperacao != -1) {
+                System.out.print(" | Recuperação: " + aluno.notaRecuperacao);
+            }
+            System.out.println();
+        }
+    }
+
     public void exibirEstatisticas() {
         int aprovados = 0, recuperacao = 0, reprovados = 0;
         for (Aluno aluno : alunos) {
@@ -47,24 +57,6 @@ public class Turma {
         System.out.println("Reprovados: " + reprovados);
     }
 
-    public void exibirListaRecuperacao() {
-        System.out.println("Lista de Estudantes em Recuperacao:");
-        for (Aluno aluno : alunos) {
-            if ("RECUPERACAO".equals(aluno.status)) {
-                System.out.println(aluno.nome + " - Média: " + aluno.media);
-            }
-        }
-    }
-
-    public void exibirListaReprovados() {
-        System.out.println("Lista de Estudantes Reprovados:");
-        for (Aluno aluno : alunos) {
-            if ("REPROVADO".equals(aluno.status)) {
-                System.out.println(aluno.nome + " - Média: " + aluno.media);
-            }
-        }
-    }
-
     public void exibirLog() {
         System.out.println("Log de Alterações:");
         for (Map.Entry<String, List<String>> entry : log.entrySet()) {
@@ -75,4 +67,3 @@ public class Turma {
         }
     }
 }
-

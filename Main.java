@@ -4,20 +4,13 @@
  */
 package main;
 
-/**
- *
- * @author Ney Allison
- */
 public class Main {
     public static void main(String[] args) {
-        
         Coordenador coord = new Coordenador("Prof. Carlos Souza");
         Professor prof = new Professor("Prof. Luis Araujo");
 
-        
         Turma turma = new Turma("1912", "Licenciatura em Computação", prof, coord);
 
-        
         Aluno aluno1 = new Aluno("Alice");
         aluno1.notas.add(8.0);
         aluno1.notas.add(6.5);
@@ -39,17 +32,12 @@ public class Main {
         aluno3.calcularMedia(false);
         turma.adicionarAluno(aluno3);
 
-        
+        turma.exibirAlunosENotas(false); 
         turma.exibirEstatisticas();
 
-       
-        turma.exibirListaRecuperacao();
-        turma.exibirListaReprovados();
-
-        
         coord.modificarNotaRecuperacao(aluno2, 5.5, turma.log);
 
-        
+        turma.exibirAlunosENotas(true); 
         turma.exibirLog();
         turma.exibirEstatisticas();
     }

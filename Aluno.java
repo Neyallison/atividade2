@@ -4,17 +4,13 @@
  */
 package main;
 
-/**
- *
- * @author Ney Allison
- */
 import java.util.ArrayList;
 import java.util.List;
 
 public class Aluno {
     String nome;
     List<Double> notas = new ArrayList<>();
-    double notaRecuperacao = -1; // 
+    double notaRecuperacao = -1; 
     double media;
     String status;
 
@@ -23,6 +19,9 @@ public class Aluno {
     }
 
     public void calcularMedia(boolean ponderada) {
+        if (notas.size() < 3) {
+            throw new IllegalArgumentException("É necessário pelo menos 3 notas para calcular a média.");
+        }
         if (ponderada) {
             media = (notas.get(0) * 0.2 + notas.get(1) * 0.3 + notas.get(2) * 0.5);
         } else {
